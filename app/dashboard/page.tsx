@@ -158,13 +158,11 @@ export default function Dashboard() {
   
 
   return (
-    <div className="min-h-screen" style={{
-      background: "linear-gradient(135deg, #faf9f7 0%, #f0e6f6 50%, #e8f4f8 100%)",
-    }}>
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="border-b border-white/30 backdrop-blur-sm sticky top-0 z-40">
+      <header className="bg-black border-b border-gray-800 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-[#5a4a7a]">My Library</h1>
+          <h1 className="text-2xl font-bold text-white">My Library</h1>
 
           <div className="flex items-center gap-4">
             {/* Avatar */}
@@ -181,7 +179,7 @@ export default function Dashboard() {
                 localStorage.removeItem("token");
                 window.location.href = "/login";
               }}
-              className="px-4 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all"
+              className="px-4 py-2 text-sm bg-white hover:bg-gray-200 text-black rounded-lg transition-all font-semibold"
             >
               Logout
             </button>
@@ -193,24 +191,24 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-full">
           {/* Left Sidebar - Stats */}
           <div className="lg:col-span-1 space-y-4">
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/30 hover:shadow-md transition-shadow">
-              <p className="text-sm text-[#8b7fa8] font-semibold mb-2">Total Books</p>
-              <p className="text-4xl font-bold text-[#5a4a7a]">{total}</p>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-800 hover:shadow-lg hover:border-gray-700 transition-all">
+              <p className="text-sm text-gray-400 font-semibold mb-2">Total Books</p>
+              <p className="text-4xl font-bold text-white">{total}</p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/30 hover:shadow-md transition-shadow">
-              <p className="text-sm text-[#d4a574] font-semibold mb-2">Want to Read</p>
-              <p className="text-4xl font-bold text-[#d4a574]">{wantToRead}</p>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-800 hover:shadow-lg hover:border-gray-700 transition-all">
+              <p className="text-sm text-gray-400 font-semibold mb-2">Want to Read</p>
+              <p className="text-4xl font-bold text-gray-100">{wantToRead}</p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/30 hover:shadow-md transition-shadow">
-              <p className="text-sm text-[#6b8fa8] font-semibold mb-2">Reading</p>
-              <p className="text-4xl font-bold text-[#6b8fa8]">{reading}</p>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-800 hover:shadow-lg hover:border-gray-700 transition-all">
+              <p className="text-sm text-gray-400 font-semibold mb-2">Reading</p>
+              <p className="text-4xl font-bold text-gray-100">{reading}</p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-white/30 hover:shadow-md transition-shadow">
-              <p className="text-sm text-[#4caf50] font-semibold mb-2">Completed</p>
-              <p className="text-4xl font-bold text-[#4caf50]">{completed}</p>
+            <div className="bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-800 hover:shadow-lg hover:border-gray-700 transition-all">
+              <p className="text-sm text-gray-400 font-semibold mb-2">Completed</p>
+              <p className="text-4xl font-bold text-gray-100">{completed}</p>
             </div>
 
             <button
@@ -218,7 +216,7 @@ export default function Dashboard() {
                 resetForm();
                 setIsModalOpen(true);
               }}
-              className="w-full mt-2 bg-gradient-to-r from-[#8b7fa8] to-[#6b8fa8] text-white rounded-lg py-2.5 font-semibold hover:shadow-lg transition-all"
+              className="w-full mt-2 bg-white hover:bg-gray-200 text-black rounded-lg py-2.5 font-semibold transition-all shadow-sm"
             >
               + Add Book
             </button>
@@ -234,8 +232,8 @@ export default function Dashboard() {
                   onClick={() => setFilter(f)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     filter === f
-                      ? "bg-[#8b7fa8] text-white shadow-md"
-                      : "bg-white/40 text-[#5a4a7a] hover:bg-white/60 border border-white/30"
+                      ? "bg-white text-black shadow-md hover:bg-gray-100"
+                      : "bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800 hover:border-gray-700"
                   }`}
                 >
                   {f === "all" ? "All Books" : f === "want_to_read" ? "Want to Read" : f === "reading" ? "Reading" : "Completed"}
@@ -245,19 +243,19 @@ export default function Dashboard() {
 
             {/* Books Grid */}
             {filteredBooks.length === 0 ? (
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-12 text-center border border-white/30">
-                <p className="text-[#8b7fa8] text-lg font-medium">No books found. Start building your collection!</p>
+              <div className="bg-gray-900 rounded-2xl p-12 text-center border border-gray-800 shadow-sm">
+                <p className="text-gray-400 text-lg font-medium">No books found. Start building your collection!</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filteredBooks.map((book) => (
                   <div
                     key={book._id}
-                    className="bg-white/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/30 hover:shadow-lg transition-all group"
+                    className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:shadow-lg hover:border-gray-700 transition-all group shadow-sm"
                   >
                     {/* Book Image */}
                     {book.image && (
-                      <div className="h-40 bg-gradient-to-br from-[#8b7fa8] to-[#6b8fa8] overflow-hidden relative">
+                      <div className="h-40 bg-gradient-to-br from-gray-700 to-gray-900 overflow-hidden relative">
                         <img
                           src={book.image}
                           alt={book.title}
@@ -268,15 +266,15 @@ export default function Dashboard() {
 
                     {/* Book Info */}
                     <div className="p-4">
-                      <h3 className="font-bold text-[#5a4a7a] text-lg truncate">{book.title}</h3>
-                      <p className="text-sm text-[#8b7fa8] mb-2">{book.author}</p>
+                      <h3 className="font-bold text-white text-lg truncate">{book.title}</h3>
+                      <p className="text-sm text-gray-400 mb-2">{book.author}</p>
 
                       {book.tags && book.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-3">
                           {book.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-xs bg-[#d4c5e2] text-[#5a4a7a] px-2 py-1 rounded-full"
+                              className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full border border-gray-700"
                             >
                               {tag}
                             </span>
@@ -289,12 +287,12 @@ export default function Dashboard() {
                         <select
                           value={book.status}
                           onChange={(e) => updateStatus(book._id, e.target.value)}
-                          className={`w-full px-3 py-2 rounded-lg text-sm font-medium border-0 cursor-pointer transition-all ${
+                          className={`w-full px-3 py-2 rounded-lg text-sm font-medium border cursor-pointer transition-all ${
                             book.status === "completed"
-                              ? "bg-[#c8e6c9] text-[#2e7d32]"
+                              ? "bg-gray-800 text-gray-100 border-gray-700"
                               : book.status === "reading"
-                              ? "bg-[#c5d9f1] text-[#1565c0]"
-                              : "bg-[#ffe0b2] text-[#e65100]"
+                              ? "bg-gray-800 text-gray-100 border-gray-700"
+                              : "bg-gray-800 text-gray-100 border-gray-700"
                           }`}
                         >
                           <option value="want_to_read">Want to Read</option>
@@ -307,13 +305,13 @@ export default function Dashboard() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleEditBook(book)}
-                          className="flex-1 bg-[#8b7fa8] hover:bg-[#7a6e97] text-white text-sm py-2 rounded-lg transition-all"
+                          className="flex-1 bg-white hover:bg-gray-200 text-black text-sm py-2 rounded-lg transition-all font-semibold"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => deleteBook(book._id)}
-                          className="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm py-2 rounded-lg transition-all"
+                          className="flex-1 bg-gray-800 hover:bg-gray-700 text-white text-sm py-2 rounded-lg transition-all border border-gray-700"
                         >
                           Delete
                         </button>
@@ -329,13 +327,13 @@ export default function Dashboard() {
 
       {/* Modal - Add/Edit Book */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-white/30">
-            <div className="sticky top-0 bg-gradient-to-r from-[#8b7fa8] to-[#6b8fa8] p-6 flex items-center justify-between">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-gray-800">
+            <div className="sticky top-0 bg-black p-6 flex items-center justify-between border-b border-gray-800">
               <h2 className="text-xl font-bold text-white">{editingBook ? "Edit Book" : "Add New Book"}</h2>
               <button
                 onClick={handleCloseModal}
-                className="text-white hover:bg-white/20 rounded-lg p-1 transition-all"
+                className="text-gray-400 hover:text-white rounded-lg p-1 transition-all"
               >
                 ✕
               </button>
@@ -344,9 +342,9 @@ export default function Dashboard() {
             <form onSubmit={handleSaveBook} className="p-6 space-y-4">
               {/* Image Upload
               <div>
-                <label className="block text-sm font-semibold text-[#5a4a7a] mb-2">Book Cover</label>
+                <label className="block text-sm font-semibold text-white mb-2">Book Cover</label>
                 <div
-                  className="border-2 border-dashed border-[#d4c5e2] rounded-lg p-4 text-center cursor-pointer hover:bg-[#f5f3f8] transition-all"
+                  className="border-2 border-dashed border-gray-700 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-800 transition-all"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   {imagePreview ? (
@@ -359,15 +357,15 @@ export default function Dashboard() {
                           setImagePreview(null);
                           setImageFile(null);
                         }}
-                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 text-xs"
+                        className="absolute top-1 right-1 bg-gray-700 text-white rounded-full p-1 text-xs"
                       >
                         ✕
                       </button>
                     </div>
                   ) : (
                     <div>
-                      <p className="text-[#8b7fa8] font-medium">Click to upload or drag & drop</p>
-                      <p className="text-xs text-[#a89bb8]">PNG, JPG up to 5MB</p>
+                      <p className="text-gray-400 font-medium">Click to upload or drag & drop</p>
+                      <p className="text-xs text-gray-500">PNG, JPG up to 5MB</p>
                     </div>
                   )}
                 </div>
@@ -382,49 +380,49 @@ export default function Dashboard() {
 
               {/* Title */}
               <div>
-                <label className="block text-sm font-semibold text-[#5a4a7a] mb-2">Title</label>
+                <label className="block text-sm font-semibold text-white mb-2">Title</label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Book title"
-                  className="w-full px-3 py-2 border border-[#d4c5e2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b7fa8] bg-white/50"
+                  className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-800 text-white placeholder-gray-500"
                   required
                 />
               </div>
 
               {/* Author */}
               <div>
-                <label className="block text-sm font-semibold text-[#5a4a7a] mb-2">Author</label>
+                <label className="block text-sm font-semibold text-white mb-2">Author</label>
                 <input
                   type="text"
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                   placeholder="Author name"
-                  className="w-full px-3 py-2 border border-[#d4c5e2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b7fa8] bg-white/50"
+                  className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-800 text-white placeholder-gray-500"
                   required
                 />
               </div>
 
               {/* Tags */}
               <div>
-                <label className="block text-sm font-semibold text-[#5a4a7a] mb-2">Tags</label>
+                <label className="block text-sm font-semibold text-white mb-2">Tags</label>
                 <input
                   type="text"
                   value={tags}
                   onChange={(e) => setTags(e.target.value)}
                   placeholder="Fiction, Mystery, Comedy (comma-separated)"
-                  className="w-full px-3 py-2 border border-[#d4c5e2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b7fa8] bg-white/50"
+                  className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-800 text-white placeholder-gray-500"
                 />
               </div>
 
               {/* Status */}
               <div>
-                <label className="block text-sm font-semibold text-[#5a4a7a] mb-2">Status</label>
+                <label className="block text-sm font-semibold text-white mb-2">Status</label>
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value as any)}
-                  className="w-full px-3 py-2 border border-[#d4c5e2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b7fa8] bg-white/50"
+                  className="w-full px-3 py-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-800 text-white"
                 >
                   <option value="want_to_read">Want to Read</option>
                   <option value="reading">Reading</option>
@@ -436,14 +434,14 @@ export default function Dashboard() {
               <div className="flex gap-3 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-[#8b7fa8] to-[#6b8fa8] text-white font-semibold rounded-lg py-2.5 hover:shadow-lg transition-all"
+                  className="flex-1 bg-white hover:bg-gray-200 text-black font-semibold rounded-lg py-2.5 transition-all"
                 >
                   {editingBook ? "Update Book" : "Add Book"}
                 </button>
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-lg py-2.5 transition-all"
+                  className="flex-1 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg py-2.5 transition-all border border-gray-700"
                 >
                   Cancel
                 </button>
